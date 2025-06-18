@@ -36,7 +36,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles.container}>
-      <h1>BoardGame App</h1>
+      <h1>Login</h1>
       <div className={styles.form}>
         <input
           type="text"
@@ -53,6 +53,7 @@ const LoginForm = () => {
         <button onClick={onLogin}>Login</button>
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
       </div>
+      <a href="/register">New here? Register now!</a>
     </div>
   );
 };
