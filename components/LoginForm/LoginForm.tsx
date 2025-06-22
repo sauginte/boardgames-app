@@ -27,6 +27,8 @@ const LoginForm = () => {
       router.push("/");
       setErrorMessage("");
     } catch (err) {
+      // ignoruojamas tam tikras kodo fragmentas:
+      //@ts-expect-error will fix this later
       if (err.status === 401) {
         setErrorMessage("You have provided bad data");
       }

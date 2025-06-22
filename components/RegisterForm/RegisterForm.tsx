@@ -35,9 +35,11 @@ const RegisterForm = () => {
       );
 
       console.log(Cookies.set("user-jwt-token", response.data.jwt));
-      router.push("/main");
+      router.push("/");
       setErrorMessage("");
     } catch (err) {
+      // ignoruojamas tam tikras kodo fragmentas:
+      //@ts-expect-error will fix this later
       if (err.status === 409) {
         setErrorMessage("This user already exists");
       }
