@@ -1,14 +1,16 @@
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 type CardProps = {
   imgUrl: string;
   title: string;
   description: string;
+  id: string;
 };
 
-const Card = ({ imgUrl, title, description }: CardProps) => {
+const Card = ({ id, imgUrl, title, description }: CardProps) => {
   return (
-    <div className={styles.container}>
+    <Link href={`/boardgame/${id}`} className={styles.container}>
       <div className={styles.photoWrapper}>
         <img src={imgUrl} />
       </div>
@@ -16,7 +18,7 @@ const Card = ({ imgUrl, title, description }: CardProps) => {
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

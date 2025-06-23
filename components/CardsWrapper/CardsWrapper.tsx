@@ -13,6 +13,7 @@ const CardsWrapper = ({ boardgames }: CardsWrapperProps) => {
         return (
           <Card
             key={b.id}
+            id={b.id}
             imgUrl={b.imgUrl}
             title={b.title}
             description={b.description}

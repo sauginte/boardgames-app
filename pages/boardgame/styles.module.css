@@ -1,0 +1,50 @@
+.container {
+  h2 {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 500px;
+  padding: 3rem;
+
+  img {
+    width: 60%;
+  }
+}
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+.rating {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(156, 62, 244);
+  color: white;
+  text-align: center;
+}
+.info {
+  display: flex;
+  /* gap: 2rem; */
+  justify-content: space-around;
+  padding: 1rem;
+}
+.otherInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+
+  h4 span {
+    font-weight: 100;
+  }
+}
+
+/* .otherInfo h4 span {
+  font-weight: 100;
+} */
