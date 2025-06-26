@@ -1,4 +1,30 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 90px;
   background-color: rgba(165, 42, 42, 0.3);
+}
+.logo {
+  padding-left: 2rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+}
+.meniu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+
+  li a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.logoutBtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
 }

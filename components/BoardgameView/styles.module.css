@@ -7,16 +7,12 @@
 .mainContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 500px;
   padding: 3rem;
-
-  img {
-    width: 60%;
-  }
 }
 .imageWrapper {
   display: flex;
   justify-content: center;
+  height: 350px;
 }
 .rating {
   width: 40px;
@@ -24,13 +20,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(156, 62, 244);
   color: white;
   text-align: center;
 }
+.ratingGreen {
+  background-color: green;
+}
+.ratingRed {
+  background-color: red;
+}
+.ratingYellow {
+  background-color: rgb(242, 234, 9);
+  color: black;
+}
 .info {
   display: flex;
-  /* gap: 2rem; */
   justify-content: space-around;
   padding: 1rem;
 }
@@ -45,6 +49,14 @@
   }
 }
 
-/* .otherInfo h4 span {
-  font-weight: 100;
-} */
+.deleteBtn {
+  width: 100px;
+  padding: 0.5rem;
+  background-color: rgba(255, 0, 0, 0.448);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.deleteBtn:hover {
+  background-color: rgba(255, 0, 0, 0.89);
+}

@@ -7,6 +7,8 @@
   gap: 2rem;
   transition: 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 .container:hover {
   scale: 1.03;
