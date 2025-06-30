@@ -19,10 +19,10 @@ const Header = () => {
       <nav>
         <ul className={styles.meniu}>
           <li>
-            <a href={"/"}>All boardgames</a>
+            <Link href={"/"}>All boardgames</Link>
           </li>
           <li>
-            <a href={""}>Add boardgame</a>
+            <Link href={"/insert"}>Add boardgame</Link>
           </li>
           {/* <li>
             {jwt ? (

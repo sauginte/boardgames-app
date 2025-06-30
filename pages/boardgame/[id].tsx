@@ -5,6 +5,7 @@ import Cookie from "js-cookie";
 import { BoardgameType } from "@/types/boardgame";
 import BoardgameView from "@/components/BoardgameView/BoardgameView";
 import { useRouter } from "next/router";
+import Loading from "@/components/Loading/Loading";
 
 const BoardgamePage = () => {
   const [game, setGame] = useState<BoardgameType | null>(null);
@@ -25,6 +26,11 @@ const BoardgamePage = () => {
       console.log(response);
     } catch (err) {
       console.log(err);
+
+      //@ts-expect-error TODO: fix error later
+      if (err.status === 404) {
+        router.push("/error");
+      }
     }
   };
 
@@ -35,7 +41,7 @@ const BoardgamePage = () => {
   return (
     <div>
       <Header />
-      {game ? <BoardgameView boardgame={game} /> : <>Loading</>}
+      {game ? <BoardgameView boardgame={game} /> : <Loading />}
     </div>
   );
 };

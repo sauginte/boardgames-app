@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  input {
+    width: 400px;
+    padding: 0.5rem;
+  }
+  textarea {
+    width: 400px;
+    padding: 0.5rem;
+  }
+}

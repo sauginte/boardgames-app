@@ -1,0 +1,20 @@
+.main {
+  width: 100px;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.main:hover {
+  background-color: rgba(255, 0, 0, 0.89);
+}
+
+.DEFAULT {
+  background-color: rgb(81, 81, 237);
+}
+.WARNING {
+  background-color: rgba(244, 244, 24, 0.846);
+}
+.DANGER {
+  background-color: rgba(255, 0, 0, 0.668);
+}

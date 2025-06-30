@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Cookie from "js-cookie";
+import Button from "../Button/Button";
 
 type BoardgameViewProps = {
   boardgame: BoardgameType;
@@ -80,9 +81,7 @@ const BoardgameView = ({ boardgame }: BoardgameViewProps) => {
             <h4>
               Box size: <span>{boardgame.boxSize}</span>
             </h4>
-            <button onClick={onDaleteBoardgame} className={styles.deleteBtn}>
-              Delete
-            </button>
+            <Button title="Delete" type="DANGER" onClick={onDaleteBoardgame} />
           </div>
         </div>
         <div></div>
