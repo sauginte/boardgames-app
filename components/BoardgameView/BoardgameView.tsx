@@ -67,15 +67,16 @@ const BoardgameView = ({ boardgame }: BoardgameViewProps) => {
             <h4>
               Can play:{" "}
               <span>
-                {boardgame.canPlayPersons[0]} - {boardgame.canPlayPersons[4]}{" "}
+                {boardgame.canPlayPersons[0]} -{" "}
+                {boardgame.canPlayPersons[boardgame.canPlayPersons.length - 1]}{" "}
                 persons
               </span>
             </h4>
             <h4>
               Best play:{" "}
               <span>
-                {boardgame.bestPlayPersons[0]} - {boardgame.bestPlayPersons[3]}{" "}
-                persons
+                {boardgame.bestPlayPersons[0]} -{" "}
+                {boardgame.canPlayPersons.length - 1} persons
               </span>
             </h4>
             <h4>

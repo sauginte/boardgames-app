@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Button from "../Button/Button";
+import { ToastContainer, toast } from "react-toastify";
+import RangeSlider from "../RangeSlider/RangeSlider";
+import { getRangeArray } from "./helper";
+import { useRouter } from "next/router";
 
 const InsertBoardgame = () => {
   const jwt = Cookies.get("user-jwt-token");
+
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,18 +23,8 @@ const InsertBoardgame = () => {
   const [dificulty, setDificulty] = useState("");
   const [boxSize, setBoxSize] = useState("");
   const [ratingCount, setRatingCount] = useState("");
-  const [canPlayPersons, setCanPlayPersons] = useState("");
-  const [bestPlayPersons, setBestPlayPersons] = useState("");
-
-  const canPlayPersonsArray = canPlayPersons
-    .split(",")
-    .map((val) => parseInt(val.trim()))
-    .filter((val) => !isNaN(val));
-
-  const bestPlayPersonsArray = bestPlayPersons
-    .split(",")
-    .map((val) => parseInt(val.trim()))
-    .filter((val) => !isNaN(val));
+  const [canPlayPersons, setCanPlayPersons] = useState<number[]>([1, 10]);
+  const [bestPlayPersons, setBestPlayPersons] = useState<number[]>([1, 10]);
 
   const onSubmit = async () => {
     try {
@@ -43,8 +39,8 @@ const InsertBoardgame = () => {
         dificulty: dificulty,
         boxSize: boxSize,
         ratingCount: ratingCount,
-        canPlayPersons: canPlayPersonsArray,
-        bestPlayPersons: bestPlayPersonsArray,
+        canPlayPersons: getRangeArray(canPlayPersons),
+        bestPlayPersons: getRangeArray(bestPlayPersons),
       };
 
       const response = await axios.post(
@@ -52,8 +48,22 @@ const InsertBoardgame = () => {
         boardgameBody,
         { headers: { Authorization: jwt } }
       );
-      Cookies.set("user-jwt-token", response.data.jwt);
-      console.log(boardgameBody);
+
+      if (response.status === 200 || response.status == 201) {
+        toast.success("Boardgame successfully added", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          router.push("/");
+        }, 4000);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -61,90 +71,80 @@ const InsertBoardgame = () => {
   return (
     <div>
       <div className={styles.form}>
-        <label>Title</label>
         <input
           type="text"
-          name="title"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>Description</label>
         <textarea
-          name="description"
+          placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label>Image URL</label>
         <input
           type="text"
-          name="imgUrl"
+          placeholder="Image Url"
           value={imgUrl}
           onChange={(e) => setImgUrl(e.target.value)}
         />
-        <label>Release year</label>
         <input
           type="number"
-          name="releaseYear"
+          placeholder="Release year"
           value={releaseYear}
           onChange={(e) => setReleaseYear(e.target.value)}
         />
-        <label>Minimum play time</label>
         <input
           type="number"
-          name="playTime"
+          placeholder="Play time"
           value={playTime}
           onChange={(e) => setPlayTime(e.target.value)}
         />
-        <label>Best age start to play</label>
         <input
           type="number"
-          name="bestStartPlayAtAge"
+          placeholder="Best start to play at age"
           value={startAge}
           onChange={(e) => setStartAge(e.target.value)}
         />
-        <label>Rating</label>
         <input
           type="number"
-          name="rating"
+          placeholder="Rating"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         />
-        <label>Dificulty</label>
         <input
           type="number"
-          name="dificulty"
+          placeholder="Dificulty"
           value={dificulty}
           onChange={(e) => setDificulty(e.target.value)}
         />
-        <label>Rating count</label>
         <input
           type="number"
-          name="ratingCount"
+          placeholder="Rating count"
           value={ratingCount}
           onChange={(e) => setRatingCount(e.target.value)}
         />
-        <label>Box size</label>
         <input
           type="text"
-          name="boxSize"
+          placeholder="Box size"
           value={boxSize}
           onChange={(e) => setBoxSize(e.target.value)}
         />
-        <label>Can play persons</label>
-        <input
-          type="text"
-          name="canPlayPersons"
-          value={canPlayPersons}
-          onChange={(e) => setCanPlayPersons(e.target.value)}
-        />
-        <label>Best play persons</label>
-        <input
-          type="text"
-          name="bestPlayPersons"
-          value={bestPlayPersons}
-          onChange={(e) => setBestPlayPersons(e.target.value)}
-        />
+
+        <label className={styles.playPersonsLabel}>
+          Can play persons (range)
+        </label>
+        <RangeSlider value={canPlayPersons} setValue={setCanPlayPersons} />
+
+        <label className={styles.playPersonsLabel}>
+          Best to play persons (range)
+        </label>
+        <RangeSlider value={bestPlayPersons} setValue={setBestPlayPersons} />
+        <br />
+
         <Button title="Submit" type="DEFAULT" onClick={onSubmit} />
+
+        <ToastContainer />
       </div>
     </div>
   );

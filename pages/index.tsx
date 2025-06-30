@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookie from "js-cookie";
 import Header from "../components/Header/Header";
 import CardsWrapper from "@/components/CardsWrapper/CardsWrapper";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function Home() {
     <>
       <Header />
       <CardsWrapper boardgames={boardgames} />
+      <Footer />
     </>
   );
 }
