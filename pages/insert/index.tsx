@@ -1,12 +1,11 @@
-import Header from "../../components/Header/Header";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import InsertBoardgame from "@/components/InsertBoardgame/InsertBoardgame";
 
 const InsertPage = () => {
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       <InsertBoardgame />
-    </div>
+    </PageTemplate>
   );
 };
 

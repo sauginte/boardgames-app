@@ -1,8 +1,9 @@
 .container {
   min-height: 620px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   gap: 2rem;
   padding: 2rem;
   flex: 1;
+  flex-wrap: wrap;
 }

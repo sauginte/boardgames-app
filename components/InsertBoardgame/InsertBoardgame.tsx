@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import axios from "axios";
 import Cookies from "js-cookie";
 import Button from "../Button/Button";
 import { ToastContainer, toast } from "react-toastify";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import { getRangeArray } from "./helper";
 import { useRouter } from "next/router";
+import { insertGame } from "@/api/game";
 
 const InsertBoardgame = () => {
   const jwt = Cookies.get("user-jwt-token");
@@ -43,11 +43,7 @@ const InsertBoardgame = () => {
         bestPlayPersons: getRangeArray(bestPlayPersons),
       };
 
-      const response = await axios.post(
-        "http://localhost:3005/games/",
-        boardgameBody,
-        { headers: { Authorization: jwt } }
-      );
+      const response = await insertGame({ jwt: jwt!, boardgameBody });
 
       if (response.status === 200 || response.status == 201) {
         toast.success("Boardgame successfully added", {

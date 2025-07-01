@@ -1,10 +1,11 @@
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import PageNotExist from "../../components/PageNotExist/PageNotExist";
 
 const index = () => {
   return (
-    <div>
+    <PageTemplate>
       <PageNotExist />
-    </div>
+    </PageTemplate>
   );
 };
 

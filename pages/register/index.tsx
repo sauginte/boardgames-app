@@ -1,12 +1,11 @@
-import Header from "../../components/Header/Header";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 const index = () => {
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       <RegisterForm />
-    </div>
+    </PageTemplate>
   );
 };
 

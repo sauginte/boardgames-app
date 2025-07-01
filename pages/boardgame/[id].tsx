@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Header from "@/components/Header/Header";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { BoardgameType } from "@/types/boardgame";
 import BoardgameView from "@/components/BoardgameView/BoardgameView";
 import { useRouter } from "next/router";
 import Loading from "@/components/Loading/Loading";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
+import { fetchBoardgameById } from "@/api/game";
 
 const BoardgamePage = () => {
   const [game, setGame] = useState<BoardgameType | null>(null);
@@ -17,9 +18,7 @@ const BoardgamePage = () => {
 
   const fetchBoardgame = async (id: string) => {
     try {
-      const response = await axios.get(`http://localhost:3005/games/${id}`, {
-        headers: { Authorization: jwt },
-      });
+      const response = await fetchBoardgameById({ id: id, jwt: jwt! });
 
       setGame(response.data.game);
 
@@ -39,10 +38,9 @@ const BoardgamePage = () => {
   }, [id]);
 
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       {game ? <BoardgameView boardgame={game} /> : <Loading />}
-    </div>
+    </PageTemplate>
   );
 };
 

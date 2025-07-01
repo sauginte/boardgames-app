@@ -1,0 +1,27 @@
+.meniu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+
+  li a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.logoutBtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .meniu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+  }
+}

@@ -1,20 +1,26 @@
 .main {
-  width: 100px;
   padding: 0.5rem;
+  width: 300px;
+  border-radius: 0.3rem;
   border: none;
   cursor: pointer;
   color: white;
 }
-.main:hover {
-  background-color: rgba(255, 0, 0, 0.89);
-}
 
 .DEFAULT {
-  background-color: rgb(81, 81, 237);
+  background-color: rgba(92, 203, 114, 0.624);
 }
+.DEFAULT:hover {
+  background-color: rgb(92, 203, 114);
+}
+
 .WARNING {
   background-color: rgba(244, 244, 24, 0.846);
 }
+
 .DANGER {
   background-color: rgba(255, 0, 0, 0.668);
+}
+.DANGER:hover {
+  background-color: rgba(255, 0, 0, 0.89);
 }
